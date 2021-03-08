@@ -19,6 +19,8 @@ const (
 	JiraSiteName = "example"
 )
 
+var _numberOfAlerts int = 0
+
 var _channelsDict map[string]*discordgo.Channel = make(map[string]*discordgo.Channel)
 var _botID string
 var _botSession *discordgo.Session
@@ -75,7 +77,7 @@ func getAllChannels() {
 func requestCallBack(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == http.MethodGet {
-		fmt.Fprint(w, "GET METHOD")
+		fmt.Fprint(w, strconv.Itoa(_numberOfAlerts)+" Alerts are sended")
 		return
 	}
 	if r.Method == http.MethodPost {
@@ -92,6 +94,8 @@ func requestCallBack(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
+		
+		_numberOfAlerts++
 
 		return
 	}
