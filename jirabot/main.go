@@ -1,7 +1,7 @@
 package main
 
 import (
-	"InteliBot/constants"
+	"jirabot/constants"
 	"encoding/json"
 	"fmt"
 	"net/http"
