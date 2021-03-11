@@ -1,4 +1,4 @@
-module InteliBot
+module JiraBot
 
 go 1.16
 
